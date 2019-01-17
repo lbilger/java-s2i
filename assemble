@@ -149,7 +149,7 @@ function build_maven() {
 # Main
 
 echo "=================================================================="
-echo "Starting S2I Java Build ....."
+echo "Starting S2I Java Build ..... (custom)"
 build_dir=$(get_output_dir)
 check_error "Cannot get output dir: $build_dir" $?
 if [ -f "${S2I_SOURCE_DIR}/pom.xml" ]; then
@@ -183,6 +183,7 @@ else
   binary_dir="${ARTIFACT_DIR:-${default_binary_dir}}"
   # Assuming that the source already contains compiled artefacts
   echo "Copying binaries from ${binary_dir} to ${DEPLOYMENTS_DIR} ..."
+  pwd
   copy_dir ${binary_dir} ${DEPLOYMENTS_DIR}
   check_error "copying ${binary_dir} to ${DEPLOYMENTS_DIR}" $?
 fi
